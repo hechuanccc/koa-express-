@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/base.css">
+    <title>轻课班长后台管理</title>
+    <link rel="stylesheet" href="./stylesheets/user.css">
+    <script>
+      (function(win,doc){
+      
+          function change(){
+            doc.documentElement.style.fontSize=doc.documentElement.clientWidth/320*20+'px';
+          }
+          change();
+          win.addEventListener('resize', change,false);
+      
+      })(window,document)
+    </script>
+  </head>
+  <body>
+    <form id="form" class="dark-matter">
+      <label><span>文字 内容 :</span>
+        <input id="name" type="text" name="con" placeholder="点击此处 输入文字">
+      </label>
+      <label><span>链接 地址 :</span>
+        <input id="email" type="text" name="href" placeholder="点击此处 插入链接">
+      </label>
+      <label><span>图片 文件 :</span><a href="javascript:;" class="a-upload"><input type="file" name="image" id="imgFile">点击这里选择图片</a></label>
+    </form>
+    <div id="imgBox" class="imgBox">暂无图片</div>
+    <div id="box" class="box"><div class="percent" id="percent"><span id="son">正在上传,请稍后</span></div> </div>
+    <div id="buttonBox" class="buttonBox">
+      <input type="button"  class="button" id="reset" value="清空" />
+      <input type="button"  class="button reset" id="submit" value="确认">
+    </div>
+    <script src="./util/util.js"></script>
+    <script src="./javascripts/user.js"></script>
+  </body>
+</html>

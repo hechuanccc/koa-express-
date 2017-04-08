@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>轻课</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/base.css">
+    <link rel="stylesheet" href="./stylesheets/index.css">
+    <script>
+      (function(win,doc){
+      
+          function change(){
+            doc.documentElement.style.fontSize=doc.documentElement.clientWidth/320*20+'px';
+          }
+          change();
+          win.addEventListener('resize', change,false);
+      
+      })(window,document)
+    </script>
+  </head>
+  <body>
+    <div class="head">
+      <div style="background-image:url()" class="headImg"></div>
+      <div class="headInfo">
+        <p class="username">
+          <% if(joinTime) {%>
+            <p class="des">轻课班长</p>
+            <p class="joinTime">加入时间：<%= joinTime %></p>
+          <%} else {%>
+            <p class="des">暂无权限</p>
+            <p class="joinTime"></p>
+          <%} %>
+        </p>
+        <p class="des">暂无权限</p>
+        <p class="joinTime"></p>
+      </div>
+    </div>
+    <div class="menu"><a href="./scholarship" class="shared-revenue">
+        <p class="title">&#65509;-.-</p>
+        <p class="description">我的分成总收入</p></a><a href="./message" class="withdraw">
+        <p class="title">班长私信</p>
+        <p class="description">立即发送</p></a><a href="./qr" class="invitation-code">
+        <p class="title">我的邀请码</p>
+        <p class="description">生成永久二维码</p></a><a href="./sources" class="contacts">
+        <p class="title">我的班级成员</p>
+        <p class="description">查看我的班级成员</p></a><a href="javascript:;" class="consumption-record">
+        <p class="title spe">好友消费记录</p>
+        <p class="description spe">即将开放</p></a><a href="javascript:;" class="withdraw-record">
+        <p class="title spe">我的提现记录</p>
+        <p class="description spe">即将开放</p></a></div>
+    <script src="./util/errorMsg.js"></script>
+    <script src="./util/util.js"></script>
+    <script src="./util/limitfetch.js"></script>
+    <script src="./javascripts/index.js"></script>
+  </body>
+</html>
+
+
+

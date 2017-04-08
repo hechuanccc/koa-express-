@@ -1,0 +1,138 @@
+        
+        var create = function(tagName){
+            return document.createElement(tagName)
+        }
+
+     
+
+        var UI = (function(){
+            var loader = create('div');
+            loader.className = 'load-container load4 loader-box';
+            var oCon = create('div');
+            oCon.className = 'loader';
+            loader.appendChild(oCon);
+           
+            var modal = create('div');
+            modal.className = 'modal';
+
+            modal.appendChild(loader)
+            document.body.appendChild(modal);
+            document.body.style.height = window.screen.height+'px';
+            modal.style.height = window.screen.height+'px';
+           
+            return {loader:loader,modal:modal}
+        })();
+
+       
+
+        UI.loader.style.display = 'block';
+        var brower = {
+            versions: function() {
+                var u = window.navigator.userAgent;
+                var num;
+                if (u.indexOf('Trident') > -1) {
+                    //CuPlayer.com提示：IE 
+                    return "IE";
+                } else if (u.indexOf('Presto') > -1) {
+                    //CuPlayer.com提示：opera 
+                    return "Opera";
+                } else if (u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1) {
+                    //firefox 
+                    return "Firefox";
+                } else if (u.indexOf('AppleWebKit' && u.indexOf('Safari') > -1) > -1) {
+                    //CuPlayer.com提示：苹果、谷歌内核 
+                    if (u.indexOf('Chrome') > -1) {
+                        //chrome 
+                        return "Chrome";
+                    } else if (u.indexOf('OPR')) {
+                        //webkit Opera 
+                        return "Opera_webkit"
+                    } else {
+                        //Safari 
+                        return "Safari";
+                    }
+                } else if (u.indexOf('Mobile') > -1) {
+                    //CuPlayer.com提示：移动端 
+                    if (!!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+                        //ios 
+                        if (u.indexOf('iPhone') > -1) {
+                            //iphone 
+                            return "iPhone"
+                        } else if (u.indexOf('iPod') > -1) {
+                            //ipod 
+                            return "iPod"
+                        } else if (u.indexOf('iPad') > -1) {
+                            //ipad 
+                            return "iPad"
+                        }
+                    } else if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+                        //android 
+                        num = u.substr(u.indexOf('Android') + 8, 3);
+                        return { "type": "Android", "version": num };
+                    } else if (u.indexOf('BB10') > -1) {
+                        //CuPlayer.com提示：黑莓bb10系统 
+                        return "BB10";
+                    } else if (u.indexOf('IEMobile')) {
+                        //windows phone 
+                        return "Windows Phone"
+                    }
+                }
+            }
+        };
+
+
+        var indexPage = function(){
+            var joinTime = document.querySelector('.joinTime')
+            var des = document.querySelector('.des');
+
+            if(brower.versions() === 'iPhone') {
+               joinTime.classList.add('iphone1')
+               des.classList.add('iphone2')
+            }
+
+            var handleFetchData = function(data) {
+                var totalBox = document.querySelector('.shared-revenue');
+                var total = totalBox.querySelector('.title');
+
+                total.innerHTML = '¥'+Number(data.total).toFixed(2);
+
+                var con = total.innerHTML.substring(1);
+
+                if (con == '0.00') {
+                    total.innerHTML = '¥ 0.00'
+                }
+
+              
+                 UI.loader.style.display = 'none';
+                 UI.modal.style.display = 'none';
+
+            }
+
+            limitFetch.getFromCookie(handleFetchData);
+
+        }
+
+
+        
+
+      
+    
+        util.domReady(indexPage);
+
+
+       
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
